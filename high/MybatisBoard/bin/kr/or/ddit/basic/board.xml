@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="boardTest">
+
+<!-- 
+
+	이 영역에서 sql문에 맞는 태그를 사용하여 SQL문을 작성한다.
+	
+	*사용할 수 있는 기본적인 태그들
+	<select> ~~~ </select>
+	<insert> ~~~ </insert>
+	<update> ~~~ </update>
+	<delete> ~~~ </delete>
+	
+	*위 태그에서 사용되는 속성들
+	1) id속성: 해당 태그를 호출할 때 mapper태그의 namespace속성과 연결하여 사용하는 이름
+	2) parameterType속성: SQL문에 사용할 데이터가 들어있는 객체타입을 지정한다. (보통 VO클래스, 자바의 자료형이름 등이 사용된다.)
+	3) resultType속성: select문을 실행한 결과를 담을 객체타입을 지정한다. (보통 VO클래스, 자바의 자료형이름 등이 사용된다.)
+	4) resultMap속성: 결과 레코드 컬럼명과 VO객체의 property명이 다를 경우에 적절한 매핑을 위해 사용된다.
+	
+ -->
+ 
+	<!-- insert 연습 -->
+	<insert id="insertBoard" parameterType="vo.BoardVO">
+	
+	INSERT INTO jdbc_board (board_no, board_title, board_writer, board_date, board_content) VALUES (board_seq.nextVal, #{boardTitle}, #{boardWriter}, sysdate, #{boardContent})
+
+	</insert>
+
+	<!-- update 연습 -->
+	<update id="updateBoard" parameterType="vo.BoardVO">
+	
+	UPDATE jdbc_board SET board_writer = #{boardWriter} ,board_title = #{boardTitle} ,board_content = #{boardContent} WHERE board_no = #{boardNo}	
+
+	</update>
+	
+	<!-- delete 연습 -->
+	<delete id="deleteBoard" parameterType="String">
+	
+	delete from jdbc_board where board_no = #{aaaaaa}
+	
+	</delete>
+	
+	
+	<resultMap type="vo.BoardVO" id="boardMap">
+	
+		<result property="boardNo" column="board_no"/>
+		<result property="boardTitle" column="board_title"/>
+		<result property="boardWriter" column="board_writer"/>
+		<result property="boardDate" column="board_date"/>
+		<result property="boardContent" column="board_content"/>
+	
+	</resultMap>
+	
+	<!-- select 연습 -->
+	<select id="boardAllList" resultMap="boardMap">
+	
+	select * from jdbc_board
+	
+	</select>
+	
+	<select id="getBoard" parameterType="String" resultMap="boardMap">
+	
+	select *
+	from jdbc_board
+	where board_no = #{boardNo}
+	
+	</select>
+	
+	<select id="checkBoard" parameterType="int" resultType="int">
+	
+	select count(*) as cnt
+	from jdbc_board
+	where board_no = #{boardNo}
+	
+	</select>
+
+</mapper>
