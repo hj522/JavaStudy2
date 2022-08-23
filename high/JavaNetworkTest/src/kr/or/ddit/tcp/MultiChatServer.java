@@ -157,10 +157,10 @@ public class MultiChatServer {
 					String[] line = msg.split(" ");
 
 					if (line.length > 2) {
-						if (line[0].equals("/w")) {
+						if (line[0].equals("/w")) {	
 
 							for (int i=2; i<line.length; i++) {
-								msg2 += (line[i]+" ");
+								msg2 += (line[i]+" "); // /w닉네임메시지 에 띄어쓰기 부여 
 							}
 							sendMessage(msg2, name, line[1]); // 오버로딩
 						}

@@ -13,6 +13,7 @@ import java.net.Socket;
 public class TcpFileSender {
 	
 	// TCP방식! 연결 기반
+	// 서버소켓과 소켓  필요
 	
 	/*
 		서버는 클라이언트가 접속했을 때

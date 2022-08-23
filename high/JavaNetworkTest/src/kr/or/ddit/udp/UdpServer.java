@@ -8,7 +8,7 @@ import java.net.SocketException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-// UDP - 연결이 필요 없다! 신뢰성x
+// UDP - 연결이 필요 없다! 상대적으로 속도가 빠르다. but 신뢰성x
 // receiver 먼저 실행
 // DatagramSocket, DatagramPacket 클래스 이용. 바이트 배열을 담는 그릇 역할
 
