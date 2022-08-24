@@ -32,7 +32,7 @@ public class T03ServletParameterTest extends HttpServlet {
 		
 		String[] food = req.getParameterValues("food");
 		
-		resp.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8"); // 반드시 출력(output)전에 해야함
 		resp.setContentType("text/html"); // text/plain -> 평범한 텍스트 파일
 	//	resp.setContentType("text/html;charset=UTF-8"); 이렇게 한 줄로 써도 가능
 		

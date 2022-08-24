@@ -73,3 +73,6 @@ public class T04ErrorHandler extends HttpServlet {
 		doGet(req, resp);
 	}
 }
+
+// localhost/어플리케이션/실제url
+// ex) http://localhost/ServletTest/T01ServletLifeCycle
