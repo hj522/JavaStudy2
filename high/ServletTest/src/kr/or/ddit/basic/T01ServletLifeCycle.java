@@ -2,10 +2,19 @@ package kr.or.ddit.basic;
 
 import java.io.IOException;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+/*	
+	HttpServletRequest
+	HttpServletResponse
+	HttpSession
+	ServletContext
+	4개 객체 중요함~ 잘 알고있기
+*/
 
 public class T01ServletLifeCycle extends HttpServlet {
 

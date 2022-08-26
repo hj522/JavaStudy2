@@ -74,5 +74,5 @@ public class T04ErrorHandler extends HttpServlet {
 	}
 }
 
-// localhost/어플리케이션/실제url
+// localhost/어플리케이션/웹컨텐츠
 // ex) http://localhost/ServletTest/T01ServletLifeCycle

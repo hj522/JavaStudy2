@@ -84,7 +84,7 @@ public class T05ServletCookieTest extends HttpServlet {
 				}
 				
 				out.println("name: " + cookie.getName() + "<br>");
-				out.println("value: " + URLDecoder.decode(cookie.getValue(), "UTF-8") + "<br>"); //디코딩
+				out.println("value: " + URLDecoder.decode(cookie.getValue(), "UTF-8") + "<br>"); // 디코딩
 				out.println("<hr>");
 			}
 			
@@ -142,10 +142,9 @@ public class T05ServletCookieTest extends HttpServlet {
 	 	   cookie.setMaxAge(60*60*24);  // 24시간
 	 	
 	 	3. 응답 헤더에 쿠키 객체를 추가한다.
+	 	   * setcookie - 쿠키를 만들어달라는 의미. 지령을 내리는 헤더 정보
 	 	   response.addCookie(cookie);
 	 		 => 출력 버퍼가 플러시 된 이후에는 쿠키를 추가할 수 없다. (응답 헤더를 통해서 웹브라우저에 전달하기 때문)
-	 		 
-	 		*setcookie - 쿠키를 만들어달라는 의미. 지령을 내리는 헤더 정보
 	 */
 		
 		req.setCharacterEncoding("UTF-8");
@@ -162,7 +161,7 @@ public class T05ServletCookieTest extends HttpServlet {
 		
 		name.setMaxAge(60 * 60 * 48); // 2일
 		
-		// 응답헤더에 쿠키 추가하기
+		// 응답헤더에 쿠키 추가하기*
 		resp.addCookie(userId);
 		resp.addCookie(name);
 		

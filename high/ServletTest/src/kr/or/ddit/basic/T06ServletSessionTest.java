@@ -30,8 +30,7 @@ public class T06ServletSessionTest extends HttpServlet {
 	 	[세션 삭제 처리 방법]
 	 	1. invalidate() 메서드 호출
 	 	2. setMaxInactiveInterval(int interval) 호출 => 일정시간(초)동안 요청이 없으면 세션객체 삭제됨
-	 	3. web.xml에 <session-config>설정 (분 단위)
-	 	
+	 	3. web.xml에 <session-config>설정 (분 단위) - 모든 세션에 적용
 	 */
 	
 	@Override
@@ -53,7 +52,7 @@ public class T06ServletSessionTest extends HttpServlet {
 		
 		if(session.isNew()) { // 세션객체가 새로 만들어진 경우
 			title = "첫 방문을 환영합니다.";
-			session.setAttribute("userId", userId); //저장
+			session.setAttribute("userId", userId); // 저장
 		} else {
 			visitCnt = (Integer) session.getAttribute("visitCnt");
 			visitCnt++;
@@ -83,11 +82,9 @@ public class T06ServletSessionTest extends HttpServlet {
 					+ "<tr><td>UserID</td><td>" + userId + "</td></tr>"
 					+ "<tr><td>방문횟수</td><td>" + visitCnt + "</td></tr>"
 					+ "</body></html>");
-		
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException ,IOException {
 		doGet(req, resp);
 	}
-	
 }
