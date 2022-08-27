@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 // 쿠키 - 브라우저 상(클라이언트)에 저장. 
+// 사용자를 구분할 수 있는 방법이 필요하기 때문에 쿠키를 이용!
 // 단점: 정보가 클라이언트에 있기 때문에 내용 조작, 강제 삭제 등의 여지가 있음.. (보안 취약)
 
 public class T05ServletCookieTest extends HttpServlet {
@@ -65,7 +66,7 @@ public class T05ServletCookieTest extends HttpServlet {
 		
 		PrintWriter out = resp.getWriter();
 		
-		String title = "쿠키정보 읽기 예제";
+		String title = "쿠키정보 삭제 예제";
 		
 		out.println("<!DOCTYPE html>" + "<html><head><title>" + title + "</title></head>"
 					+ "<body>");
@@ -155,7 +156,7 @@ public class T05ServletCookieTest extends HttpServlet {
 		// 쿠키값에 한글을 사용하여 인코딩 처리
 		Cookie name = new Cookie("name", URLEncoder.encode(req.getParameter("name"), "utf-8"));
 		
-		// 쿠키 소멸시간 설정(초단위)
+		// 쿠키 소멸시간 설정(초단위) -> 지정해주지 않으면 웹브라우저를 종료할 때 쿠키가 함께 삭제된다.
 		userId.setMaxAge(60 * 60 * 24); // 1일
 		userId.setHttpOnly(true); // javascript를 이용한 직접접근 방지
 		

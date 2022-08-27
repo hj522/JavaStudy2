@@ -12,15 +12,15 @@ import javax.servlet.http.HttpSession;
 
 public class T06ServletSessionTest extends HttpServlet {
 
+	// 서버에서 관리되고 있는 객체. 쿠키처럼 사라지지 않고 서버에 데이터를 저장
+	// Session이 유지되는 동안 response가 계속 살아있음!
+	// 단점: 서버의 자원을 사용하는 것이라 속도 저하가 올 수 있음
+
 	/*
 	 	세션(HttpSession)객체에 대하여
 	 	
 	 	- 세션을 통해서 사용자(브라우저)별로 구분하여 정보를 관리할 수 있다.(세션ID 이용)
 	 	- 쿠키를 사용할 때보다 보안이 향상된다. (정보가 서버에 저장되기 때문에)
-		// 서버에서 관리되고 있는 객체
-		// Session이 유지되는 동안 response가 계속 살아있음!
-		// 사용자별 세션 객체를 만들어낼 수 있음
-	 	
 	 	
 	 	[세션 객체를 가져오는 방법]
 	 	HttpSession session = request.getSession(boolean값);
@@ -61,8 +61,8 @@ public class T06ServletSessionTest extends HttpServlet {
 		
 		session.setAttribute("visitCnt", visitCnt); //저장
 		
-//		session.invalidate(); // 세션객체 삭제 처리
-//		session.setMaxInactiveInterval(10); // 10초 간 반응이 없으면 삭제
+//		session.invalidate(); // 1번 방법: 세션객체 삭제 처리
+//		session.setMaxInactiveInterval(10); // 2번 방법: 10초 간 반응이 없으면 삭제
 		
 		
 		// 응답헤더에 인코딩 및 Content-Type 설정
