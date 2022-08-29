@@ -4,10 +4,17 @@
     pageEncoding="UTF-8"%>
 <%
 	List<MemberVO> memList = (List<MemberVO>)request.getAttribute("memList");
+
+	String msg = session.getAttribute("msg") == null ? "" : (String)session.getAttribute("msg"); 
+	
+	session.removeAttribute("msg"); // 꺼내온 메시지 속성값 삭제하기
 %>
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+<title>회원목록</title>
+</head>
 <body>
 <table border="1">
 	<tr>
@@ -23,7 +30,7 @@
 %>
 	<tr>
 		<td><%= memList.get(i).getMemId() %></td>
-		<td><%= memList.get(i).getMemName() %></td>
+		<td><a href="detail.do?memId=<%= memList.get(i).getMemId() %>"><%= memList.get(i).getMemName() %></a></td>
 		<td><%= memList.get(i).getMemTel() %></td>
 		<td><%= memList.get(i).getMemAddr() %></td>
 	</tr>
@@ -37,11 +44,20 @@
 <%
  }
 %>
+	<tr>
+		<td colspan="4"><a href="insert.do">[회원정보 등록]</a></td>
+	</tr>
 </table>
-</body>
-<meta charset="UTF-8">
-<title>회원목록</title>
-</head>
-<body>
+<%
+	if(msg.equals("성공")){
+%>
+	<script>
+		alert("정상적으로 처리되었습니다.");
+	</script>
+
+<%
+	}
+%>
+
 </body>
 </html>

@@ -48,7 +48,7 @@ public class MemberDAOImpl implements IMemberDAO {
 
 	@Override
 	public int updateMember(MemberVO mv) {
-		int cnt = SqlSession.update("member.insertMember", mv);
+		int cnt = SqlSession.update("member.updateMember", mv);
 		return cnt;
 	}
 
@@ -68,5 +68,13 @@ public class MemberDAOImpl implements IMemberDAO {
 	public List<MemberVO> searchMemberList(MemberVO mv) {
 		List<MemberVO> memList = SqlSession.selectList("member.searchMemberList", mv);
 		return memList;
+	}
+
+	@Override
+	public MemberVO getMember(String memId) {
+		
+		MemberVO memVO = SqlSession.selectOne("member.getMember", memId);
+		
+		return memVO;
 	}
 }

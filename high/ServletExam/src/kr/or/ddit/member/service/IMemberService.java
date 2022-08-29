@@ -32,6 +32,15 @@ public interface IMemberService {
 	
 	
 	/**
+	 * 주어진 회원 ID에 해당하는 회원 정보 가져오기
+	 * @param memId 회원아이디
+	 * @return 회원 정보를 담은 MemberVO
+	 */
+	public MemberVO getMember(String memId);
+	
+	
+	
+	/**
 	 * 하나의 MemberVO 자료를 이용하여 DB를 update하는 메소드
 	 * @param mv 수정할 회원정보가 들어있는 MemberVO객체
 	 * @return 작업 성공: 1, 작업 실패: 0

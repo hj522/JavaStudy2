@@ -1,7 +1,6 @@
 package kr.or.ddit.member.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,27 +12,38 @@ import kr.or.ddit.member.service.IMemberService;
 import kr.or.ddit.member.service.MemberServiceImpl;
 import kr.or.ddit.member.vo.MemberVO;
 
-// 화면은 get방식이지만 처리작업은 post방식으로 진행
+// 서블릿으로 update controller 생성해봄..
 
+/**
+ * Servlet implementation class UpdateMemberController
+ */
+@WebServlet("/member/update.do")
+public class UpdateMemberController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 
-@WebServlet("/member/insert.do")
-public class InsertMemberController extends HttpServlet {
-	
-	@Override
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		req.getRequestDispatcher("/view/member/insertForm.jsp").forward(req, resp);	
+		String memId = req.getParameter("memId");
+		
+		// 1. 서비스 객체 생성하기
+		IMemberService memService = MemberServiceImpl.getInstance();
+		MemberVO mv = memService.getMember(memId); 
+		
+		req.setAttribute("mv", mv);
+
+		req.getRequestDispatcher("/view/member/updateForm.jsp").forward(req, resp);
 		
 	}
-	
-	@Override
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		// 사용자가 가입등록버튼을 눌러서 데이터가 날아오면 doPost가 실행됨
-		
-//		req.setCharacterEncoding("UTF-8");
-		
-		// 1. 파라미터 데이터 가져오기
+		// 1. 요청파라미터 정보 가져오기
 		String memId = req.getParameter("memId");
 		String memName = req.getParameter("memName");
 		String memTel = req.getParameter("memTel");
@@ -42,39 +52,32 @@ public class InsertMemberController extends HttpServlet {
 		// 2. 서비스 객체 생성하기
 		IMemberService memService = MemberServiceImpl.getInstance();
 		
-		// 3. 회원정보 등록하기
+		// 3. 회원 정보 수정하기
 		MemberVO mv = new MemberVO();
 		mv.setMemId(memId);
 		mv.setMemName(memName);
 		mv.setMemTel(memTel);
 		mv.setMemAddr(memAddr);
 		
-		int cnt = memService.RegisterMember(mv);
+		int cnt = memService.modifyMember(mv);
 		
 		String msg = "";
 		
 		if(cnt > 0) {
-			// 성공
-			msg = "성공!";
+			msg = "성공";
 		} else {
-			// 실패
-			msg = "실패..";
+			msg = "실패";
 		}
+		
+//		req.setAttribute("msg", msg); // 리퀘스트 저장 내용이 응답하기 전까지만 유지가 된다.
 		
 		HttpSession session = req.getSession();
 		session.setAttribute("msg", msg);
 		
-//		// 4. 목록 조회 화면으로 이동
-//		req.getRequestDispatcher("/member/list.do").forward(req, resp);
-		
+		// 4. 목록 조회 화면으로 이동
 		String redirectUrl = req.getContextPath() + "/member/list.do";
 		
 		resp.sendRedirect(redirectUrl);
-		
-		
 	}
 }
 
-
-// forward
-// redirect 방향이 바뀜. 요청이 2번 일어난 것과 같음

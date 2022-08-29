@@ -41,3 +41,6 @@ public class T12ImageServlet extends HttpServlet {
 		doGet(req, resp);
 	}
 }
+
+// post -> 회원가입 시 정보를 보낼 때 사용하면 됨! (폼 데이터 전송)
+// get -> a태그(링크) 페이지 내용 가져오기 . ..
