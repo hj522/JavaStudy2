@@ -19,6 +19,15 @@ public class MemberVO {
 	private String memTel;
 	private String memAddr;
 	private Date regDate; //회원정보등록일자
+	private long atchFileId = -1; 	// 첨부파일ID
+	
+	
+	public long getAtchFileId() {
+		return atchFileId;
+	}
+	public void setAtchFileId(long atchFileId) {
+		this.atchFileId = atchFileId;
+	}
 	
 	public String getMemId() {
 		return memId;

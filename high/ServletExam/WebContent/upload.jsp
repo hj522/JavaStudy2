@@ -13,5 +13,12 @@
 	전송자: <input type="text" name="sender">
 	<button type="submit">파일업로드</button>
 </form>
+<hr>
+<h3>서블릿 버전 3.0부터 지원하는 Part 인터페이스를 이용한 파일 업로드</h3>
+<form action="upload2.do" method="post" enctype="multipart/form-data">
+	파일 선택: <input type="file" name="uploadFile">
+	전송자: <input type="text" name="sender">
+	<button type="submit">파일업로드</button>
+</form>
 </body>
 </html>

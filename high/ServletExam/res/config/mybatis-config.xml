@@ -12,9 +12,9 @@
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
 
-
 	<typeAliases>
 		<typeAlias type="kr.or.ddit.member.vo.MemberVO" alias="memVO"/>
+		<typeAlias type="kr.or.ddit.comm.vo.AtchFileVO" alias="atchVO"/>
 	</typeAliases>	
 
 	<environments default="development">
@@ -36,6 +36,7 @@
 	
 	<mappers>
 		<mapper resource="mappers/member.xml" /> <!-- 쿼리 위치. mapperfile-->
+		<mapper resource="mappers/atchFile.xml" />
 	</mappers>
 	
 </configuration>
