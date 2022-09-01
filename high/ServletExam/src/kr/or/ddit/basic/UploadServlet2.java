@@ -66,7 +66,7 @@ public class UploadServlet2 extends HttpServlet {
 	/*
 	 	Content-Disposition: form-data
 	 	Content-Disposition: form-data; name="fieldName"
-	 	Content-Disposition: form-data; name="fieldName"; filename="a.jpg"
+	 	Content-Disposition: form-data; name="fieldName"; filename="a.jpg" // filename이 반드시 있어야 한당
 	 */
 		
 		for(String content : part.getHeader("Content-Disposition").split(";")) {

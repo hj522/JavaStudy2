@@ -41,7 +41,7 @@
 					if(atchFileList != null) {
 						for(AtchFileVO fileVO : atchFileList) {
 				%>
-					<div><a href="#"><%=fileVO.getOrignlFileNm() %></a></div>				
+					<div><a href="<%=request.getContextPath() %>/filedown.do?fileId=<%=fileVO.getAtchFileId() %>&fileSn=<%=fileVO.getFileSn() %>"><%=fileVO.getOrignlFileNm() %></a></div>				
 				<%
 						}
 					}
