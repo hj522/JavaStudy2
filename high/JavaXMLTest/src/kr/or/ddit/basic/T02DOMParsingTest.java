@@ -44,7 +44,7 @@ public class T02DOMParsingTest {
 		NodeList firstBookChildNodeList = firstBookNode.getChildNodes();
 		
 		// 엔터키에 해당하는 부분이 읽힐 수 있기 때문에 getChildNodes()보다는 
-		// getElementByTagName()을 이용해 접근하는 방법이 좋다.
+		// getElementByTagName()을 이용해 접근하는 방법이 좋다. (핸들링이 쉬움)
 		Node titleNode = firstBookChildNodeList.item(1);
 		/*    <book isbn="B001" kind="JAVA"> ///// <- 이 공간(0)도 노드로 인식해서 item(1)로 접근해야 title이 선택된다**
 		  /// <title>자바초급</title> */
